@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { ServerService } from '../../service/server.service';
+import { CrearSalaArgs } from '../../interfaces/crearSala';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-jugar',
@@ -10,4 +13,17 @@ import { RouterModule } from '@angular/router';
 })
 export class JugarComponent {
 
+  serverService = inject(ServerService)
+  usuarioService = inject(UsuarioService)
+
+  constructor() {
+    const args: CrearSalaArgs = {
+      publica: true,
+      nombreJugador: this.usuarioService.nombre()
+    }
+    this.serverService.server.emitWithAck('crearSala', args).then(res => {
+      console.log("Crear Sala", res);
+
+    })
+  }
 }

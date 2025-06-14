@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { UsuarioService } from '../../services/usuario.service';
+import { ServerService } from '../../service/server.service';
 
 @Component({
   selector: 'app-home',
@@ -12,5 +13,14 @@ import { UsuarioService } from '../../services/usuario.service';
 export class HomeComponent {
 
   usuarioService = inject(UsuarioService)
+  serverService = inject(ServerService)
+  router = inject(Router)
 
+  /** Pregunta al servidor si hay una sala publica disponible */
+  buscarSalaPublica() {
+    this.serverService.server.emitWithAck("encontrarSala").then(res => {
+      if (res === null) return this.router.navigate(["/jugar"])
+      return this.router.navigate(["/jugar", res])
+    })
+  }
 }
