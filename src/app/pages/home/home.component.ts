@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { UsuarioService } from '../../services/usuario.service';
-import { ServerService } from '../../service/server.service';
+import { ServerService } from '../../services/server.service';
 
 @Component({
   selector: 'app-home',
