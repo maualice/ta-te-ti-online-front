@@ -32,4 +32,8 @@ export class JugarComponent implements OnInit {
       this.salaService.crearSala(true);
     }
   }
+
+  nuevaRonda() {
+    this.salaService.nuevaRonda()
+  }
 }
