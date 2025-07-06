@@ -2,7 +2,11 @@ import { ApplicationConfig, provideZonelessChangeDetection, provideZoneChangeDet
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 
 import { routes } from './app.routes';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZonelessChangeDetection(), provideRouter(routes, withComponentInputBinding())]
+  providers: [
+    provideZonelessChangeDetection(),
+    provideRouter(routes, withComponentInputBinding()),
+    provideAnimationsAsync()]
 };
