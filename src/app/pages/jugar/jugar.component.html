@@ -20,6 +20,12 @@
     @case ("VICTORIA_FINAL_P2") {
       <h2 primario>Ganó {{salaService.jugador2().nombre}} todas las rondas</h2>
     }
+    @case ("ABANDONADO") {
+      <h2 primario>El otro jugador ha abandonado la partida</h2>
+    }
+    @case ("EMPATE") {
+      <h2 primario>Empate</h2>
+    }
   }
   @switch (estadoAnterior()) {
     @case ("ESPERANDO_COMPAÑERO") {
@@ -35,6 +41,12 @@
       <button secundario (click)="nuevaRonda()" class="boton">Nueva partida</button>
     }
     @case ("VICTORIA_FINAL_P2") {
+      <button secundario (click)="nuevaRonda()" class="boton">Nueva partida</button>
+    }
+    @case ("ABANDONADO") {
+      <a [routerLink]="['/']" secundario class="boton">Volver al inicio</a>
+    }
+    @case ("EMPATE") {
       <button secundario (click)="nuevaRonda()" class="boton">Nueva partida</button>
     }
   }

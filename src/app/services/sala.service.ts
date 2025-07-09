@@ -1,5 +1,5 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { EstadoJuego, POSICION_TABLERO, PosicionGanadora, SalaBackend, Tablero } from '../interfaces/sala';
+import { EstadoJuego, PosicionTablero, PosicionGanadora, SalaBackend, Tablero } from '../interfaces/sala';
 import { Jugador } from '../interfaces/jugador';
 import { ServerService } from './server.service';
 import { CrearSalaArgs } from '../interfaces/crearSala';
@@ -37,7 +37,7 @@ export class SalaService {
   posicionGanadora = signal<PosicionGanadora | undefined>(undefined);
 
   desestructurarSala(salaBack: SalaBackend) {
-    console.log("Desestructurando", salaBack)
+    //console.log("Desestructurando", salaBack)
     if (!salaBack) this.router.navigate(["/"]); //si no existe la sala
     this.id.set(salaBack.id);
     this.estado.set(salaBack.estado);
@@ -55,7 +55,7 @@ export class SalaService {
       nombreJugador: this.usuarioService.nombre()
     }
     this.serverService.server.emitWithAck("crearSala", args).then(res => {
-      console.log("Crear sala", res)
+      //console.log("Crear sala", res)
       this.desestructurarSala(res.sala);
       this.numeroDeJugador.set(1)
     })
@@ -68,15 +68,15 @@ export class SalaService {
       nombreJugador: this.usuarioService.nombre()
     }
     this.serverService.server.emitWithAck("unirseASala", args).then(res => {
-      console.log("Resultado de unión a sala", res)
+      //console.log("Resultado de unión a sala", res)
       this.desestructurarSala(res.sala);
       this.numeroDeJugador.set(2)
     })
   }
 
   /** Envia al server la petición de un jugador de hacer una jugada */
-  jugar(posicion: POSICION_TABLERO) {
-    console.log("Emitiendo jugada")
+  jugar(posicion: PosicionTablero) {
+    //console.log("Emitiendo jugada")
     this.serverService.server.emit("jugar", {
       salaId: this.id(),
       jugador: this.numeroDeJugador(),

@@ -16,7 +16,7 @@ export class ServerService {
 
   constructor() {
     this.server.on("connect", () => {//listener para el evento connect del socket,cuando se dispare evento connect ejecuta esta funcion
-      console.log("Conectado al back");
+      //console.log("Conectado al back");
     });
     this.server.on("sala", (args) => {
       this.actualizacionDeSala$.next(args)

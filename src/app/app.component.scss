@@ -3,14 +3,14 @@
 $border-radius-base: 20px;
 $padding-consola: 20px;
 
-#container{
+#container {
   background-color: colors.$accent-1;
   max-width: 500px;
   border-radius: 40px;
-  padding: calc( $border-radius-base + $padding-consola);
+  padding: calc($border-radius-base + $padding-consola);
 }
 
-#pantalla{
+#pantalla {
   height: 500px;
   background-color: colors.$background;
   border-radius: $border-radius-base;
@@ -20,37 +20,37 @@ $padding-consola: 20px;
   overflow: hidden;
 }
 
-p{
+p {
   margin-top: 26px;
   font-weight: bold;
 }
 
-@media(width <= 600px){
-  body{
+@media(width <= 600px) {
+  body {
     margin: 0;
   }
 
-  #container{
+  #container {
     max-width: 100%;
   }
 }
 
-@media(height <= 900px){
-  body{
+@media(height <= 900px) {
+  body {
     margin: 0;
   }
 
-  app-botonera{
+  app-botonera {
     display: none;
   }
 
-  #container{
+  #container {
     height: 100svh;
     box-sizing: border-box;
     border-radius: 0;
   }
 
-  #pantalla{
-    height: 87svh;
+  #pantalla {
+    height: calc( 100svh - ($padding-consola * 2) - ($border-radius-base + $padding-consola )* 2);
   }
 }
