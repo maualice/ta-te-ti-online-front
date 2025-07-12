@@ -52,7 +52,7 @@ export class JugarComponent implements OnInit {
   }
 
   copiarLink() {
-    navigator.clipboard.writeText(environment.CLIENT_URL + "jugar/" + this.salaService.id());
+    navigator.clipboard.writeText(environment.CLIENT_URL + "/jugar/" + this.salaService.id());
     this.linkCopiado.set(true);
     setTimeout(() => this.linkCopiado.set(false), 2000);
   }
