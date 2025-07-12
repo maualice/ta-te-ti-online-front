@@ -8,6 +8,7 @@ import { SalaService } from '../../services/sala.service';
 import { ModalFullscreenComponent } from "../../components/modal-fullscreen/modal-fullscreen.component";
 import { EstadoJuego } from '../../interfaces/sala';
 import { Location } from '@angular/common';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-jugar',
@@ -51,7 +52,7 @@ export class JugarComponent implements OnInit {
   }
 
   copiarLink() {
-    navigator.clipboard.writeText("localhost:4200/jugar/" + this.salaService.id());
+    navigator.clipboard.writeText(environment.CLIENT_URL + "jugar/" + this.salaService.id());
     this.linkCopiado.set(true);
     setTimeout(() => this.linkCopiado.set(false), 2000);
   }
